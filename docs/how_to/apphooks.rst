@@ -53,11 +53,11 @@ documentation might advise that you when include its URLs, you do it thus:
 
 ..  code-block:: python
 
-    re_path(r'^myapp/', include('myapp.urls', app_name='myapp'))
+    path('myapp/', include('myapp.urls', app_name='myapp'))
 
-If you fail to do this, then any templates in the application that invoke URLs using the form ``{% url
-'myapp:index' %}`` or views that call (for example) ``reverse('myapp:index')`` will throw a
-``NoReverseMatch`` error.
+If you fail to do this, then any templates in the application that invoke URLs using the form
+``{% url 'myapp:index' %}`` or views that call (for example) ``reverse('myapp:index')`` will throw
+a ``NoReverseMatch`` error.
 
 
 Apphooks for non-namespaced applications
@@ -85,15 +85,15 @@ to return them manually, for example if you need to override the set provided. A
 
 ..  code-block:: python
 
-    from django.urls import re_path
+    from django.urls import path
     from myapp.views import SomeListView, SomeDetailView
 
     class MyApphook(CMSApp):
         # ...
         def get_urls(self, page=None, language=None, **kwargs):
             return [
-                re_path(r'^$', SomeListView.as_view()),
-                re_path(r'^(?P<slug>[\w-]+)/?$', SomeDetailView.as_view()),
+                path('<str:slug>/', SomeDetailView.as_view()),
+                path('', SomeListView.as_view()),
             ]
 
 However, it's much neater to keep them in the application's ``urls.py``, where they can easily be
@@ -139,8 +139,8 @@ page's own URL, and any lower-level URLs will be on the same URL path.
 So, given an application with the ``urls.py`` for the views ``index_view`` and ``archive_view``::
 
     urlpatterns = [
-        re_path(r'^$', index_view),
-        re_path(r'^archive/$', archive_view),
+        path('archive/', archive_view),
+        path('', index_view),
     ]
 
 attached to a page whose URL path is ``/hello/world/``, the views will be exposed as follows:

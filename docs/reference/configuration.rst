@@ -29,9 +29,13 @@ The ``MIDDLEWARE`` setting
 ``cms.middleware.utils.ApphookReloadMiddleware``
 ================================================
 
-Adding ``ApphookReloadMiddleware`` to the ``MIDDLEWARE`` tuple will enable automatic server
-restarts when changes are made to apphook configurations. It should be placed as near to the top of
-the classes as possible.
+Adding ``ApphookReloadMiddleware`` to the ``MIDDLEWARE`` in your ``settings.py`` will enable
+automatic server restarts when changes are made to apphook configurations. It should be placed as
+near to the top of the classes as possible.
+
+Adding this middleware only makes sense, if you change the Python modules defining your app hooks
+on a running system. This is because then these modules are reloaded during runtime. On setups
+using prebuild Docker containers, this usually is not recommended.
 
 .. note::
 
