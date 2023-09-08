@@ -11,7 +11,7 @@ from django.utils.functional import cached_property
 from django.utils.translation import override as force_language
 
 from cms import __version__
-from cms.api import get_page_draft
+from cms.api import _get_page_draft as get_page_draft
 from cms.constants import LEFT, REFRESH_PAGE
 from cms.forms.login import CMSToolbarLoginForm
 from cms.models import Placeholder, UserSettings

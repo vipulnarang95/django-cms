@@ -4,7 +4,7 @@ from django.utils.functional import SimpleLazyObject
 from django.utils.translation import override as force_language
 
 from cms import constants
-from cms.api import get_page_draft
+from cms.api import _get_page_draft as get_page_draft
 from cms.apphook_pool import apphook_pool
 from cms.models import EmptyTitle
 from cms.utils.conf import get_cms_setting

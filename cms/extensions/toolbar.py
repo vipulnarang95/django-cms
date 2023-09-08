@@ -1,6 +1,6 @@
 from django.urls import NoReverseMatch
 
-from cms.api import get_page_draft
+from cms.api import _get_page_draft as get_page_draft
 from cms.toolbar_base import CMSToolbar
 from cms.utils import get_language_list
 from cms.utils.page_permissions import user_can_change_page

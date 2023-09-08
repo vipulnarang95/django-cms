@@ -1,6 +1,6 @@
 from functools import wraps
 
-from cms.api import get_page_draft
+from cms.api import _get_page_draft as get_page_draft
 from cms.cache.permissions import get_permission_cache, set_permission_cache
 from cms.constants import GRANT_ALL_PERMISSIONS
 from cms.models import Page, Placeholder
