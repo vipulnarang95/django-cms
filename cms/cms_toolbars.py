@@ -5,11 +5,11 @@ from django.contrib.auth.models import AnonymousUser
 from django.contrib.sites.models import Site
 from django.db.models import Q
 from django.urls import NoReverseMatch, Resolver404, resolve, reverse
-from django.utils.translation import gettext
 from django.utils.translation import gettext_lazy as _
 from django.utils.translation import override as force_language
 
-from cms.api import can_change_page, _get_page_draft as get_page_draft
+from cms.api import _get_page_draft as get_page_draft
+from cms.api import can_change_page
 from cms.constants import PUBLISHER_STATE_PENDING, TEMPLATE_INHERITANCE_MAGIC
 from cms.models import Page, PageType, Placeholder, StaticPlaceholder, Title
 from cms.toolbar.items import REFRESH_PAGE, ButtonList, TemplateItem
@@ -48,12 +48,12 @@ TOOLBAR_DISABLE_BREAK = 'Toolbar disable Break'
 SHORTCUTS_BREAK = 'Shortcuts Break'
 
 DEFAULT_HELP_MENU_ITEMS = (
-    (gettext("Getting started developer guide"), 'https://docs.django-cms.org/en/latest/introduction/index.html'),
-    (gettext("Documentation"), 'https://docs.django-cms.org/en/latest/'),
-    (gettext("User guide"), 'https://docs.google.com/document/d/1f5eWyD_sxUSok436fSqDI0NHcpQ88CXQoDoQm9ZXb0s/'),
-    (gettext("Support Forum"), 'https://discourse.django-cms.org/'),
-    (gettext("Support Slack"), 'https://www.django-cms.org/slack'),
-    (gettext("What's new"), 'https://www.django-cms.org/en/blog/'),
+    (_("Getting started developer guide"), 'https://docs.django-cms.org/en/latest/introduction/index.html'),
+    (_("Documentation"), 'https://docs.django-cms.org/en/latest/'),
+    (_("User guide"), 'https://docs.google.com/document/d/1f5eWyD_sxUSok436fSqDI0NHcpQ88CXQoDoQm9ZXb0s/'),
+    (_("Support Forum"), 'https://discourse.django-cms.org/'),
+    (_("Support Slack"), 'https://www.django-cms.org/slack'),
+    (_("What's new"), 'https://www.django-cms.org/en/blog/'),
 )
 
 
