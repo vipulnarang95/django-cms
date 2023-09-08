@@ -9,7 +9,7 @@ from django.utils.translation import gettext
 from django.utils.translation import gettext_lazy as _
 from django.utils.translation import override as force_language
 
-from cms.api import can_change_page, get_page_draft
+from cms.api import can_change_page, _get_page_draft as get_page_draft
 from cms.constants import PUBLISHER_STATE_PENDING, TEMPLATE_INHERITANCE_MAGIC
 from cms.models import Page, PageType, Placeholder, StaticPlaceholder, Title
 from cms.toolbar.items import REFRESH_PAGE, ButtonList, TemplateItem
