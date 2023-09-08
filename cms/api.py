@@ -462,6 +462,16 @@ def publish_pages(include_unpublished=False, language=None, site=None):
         yield (page, add)
 
 
+def _get_page_draft(page):
+    if page:
+        if page.publisher_is_draft:
+            return page
+        else:
+            return page.publisher_public
+    else:
+        return None
+
+
 def get_page_draft(page):
     """
     Returns the draft version of a page, regardless if the passed in
@@ -476,13 +486,7 @@ def get_page_draft(page):
                   'that adds publishing, such as: djangocms-versioning.',
                   UserWarning, stacklevel=2)
 
-    if page:
-        if page.publisher_is_draft:
-            return page
-        else:
-            return page.publisher_public
-    else:
-        return None
+    return _get_page_draft(page)
 
 
 def copy_plugins_to_language(page, source_language, target_language,
